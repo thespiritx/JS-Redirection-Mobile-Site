@@ -103,7 +103,7 @@ SA.redirection_mobile = function(configuration) {
 	var getQueryValue = function(param) {
 
 		if (!param) {
-			return;
+			return false;
 		}
 
 		var querystring = document.location.search,
@@ -119,6 +119,7 @@ SA.redirection_mobile = function(configuration) {
 				return token.substring(token.indexOf("=") + 1, token.length);
 			}
 		}
+		return false;
 
 	};
 				
@@ -150,7 +151,8 @@ SA.redirection_mobile = function(configuration) {
 		host = document.location.host,
 
 		// value for the parameter passed in the URL to avoid the redirection
-		queryValue = getQueryValue(redirection_param),
+		// Check if redirection parameter is set and set queryValue to boolean value of string returned
+		queryValue = getQueryValue(redirection_param)!==false?getQueryValue(redirection_param).toLowerCase()=='true'?true:false:true,
 
 		// Compose the mobile hostname considering "mobile_url" or "mobile_prefix" + hostname
 		mobile_host = mobile_url ||
@@ -203,7 +205,7 @@ SA.redirection_mobile = function(configuration) {
 		var isUATablet = (config.tablet_redirection === TRUE || !!config.tablet_url) ? true : false;
 		isUAMobile = false;
 	}
-
+	
 	// Check that User Agent is mobile, cookie is not set or value in the sessionStorage not present
 	if ((isUATablet || isUAMobile) && !(isCookieSet || isSessionStorage)) {
 
