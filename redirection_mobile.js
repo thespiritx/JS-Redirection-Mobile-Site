@@ -185,6 +185,12 @@ SA.redirection_mobile = function(configuration) {
 			document.cookie = redirection_param + "=" + TRUE + ";expires="+
 				addTimeToDate(3600*1000*cookie_hours).toUTCString();
 		}
+	} else if( queryValue === FALSE ) {
+		if (window.sessionStorage) {
+			window.sessionStorage.removeItem(redirection_param);
+		} else {
+			document.cookie = redirection_param + "=" + TRUE + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+		}
 	}
 
 	// Check if the sessionStorage contain the parameter
