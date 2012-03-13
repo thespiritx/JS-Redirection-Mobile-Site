@@ -114,7 +114,6 @@ SA.redirection_mobile = function(configuration) {
 		for (; i < length; i++) {
 			var token = queryStringArray[i],
 				firstPart = token && token.substring(0, token.indexOf("="));
-			if (window.console) console.log('firstPart :: '+token.substring(token.indexOf("=") + 1, token.length));
 			if (firstPart === param ) {
 				return token.substring(token.indexOf("=") + 1, token.length);
 			}
