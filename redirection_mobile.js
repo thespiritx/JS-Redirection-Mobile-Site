@@ -151,7 +151,7 @@ SA.redirection_mobile = function(configuration) {
 
 		// value for the parameter passed in the URL to avoid the redirection
 		// Check if redirection parameter is set and set queryValue to boolean value of string returned
-		queryValue = getQueryValue(redirection_param)!==false?getQueryValue(redirection_param).toLowerCase()=='true'?true:false:true,
+		queryValue = getQueryValue(redirection_param)!==false?(getQueryValue(redirection_param).toLowerCase()=='true'?true:false):true,
 
 		// Compose the mobile hostname considering "mobile_url" or "mobile_prefix" + hostname
 		mobile_host = mobile_url ||
