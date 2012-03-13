@@ -231,9 +231,9 @@ SA.redirection_mobile = function(configuration) {
 		} else if (isUAMobile) {
 			document.location.href = mobile_protocol + "//" + mobile_host + path_query;
 			return 'mobile';
-		} else {
-			return 'desktop';
 		}
 		
-	} 
+	}
+	
+	return 'desktop';
 };	
