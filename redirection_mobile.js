@@ -114,6 +114,7 @@ SA.redirection_mobile = function(configuration) {
 		for (; i < length; i++) {
 			var token = queryStringArray[i],
 				firstPart = token && token.substring(0, token.indexOf("="));
+			if (window.console) console.log('firstPart :: '+token.substring(token.indexOf("=") + 1, token.length));
 			if (firstPart === param ) {
 				return token.substring(token.indexOf("=") + 1, token.length);
 			}
@@ -225,8 +226,12 @@ SA.redirection_mobile = function(configuration) {
 		
 		if (isUATablet){
 			document.location.href = mobile_protocol + "//" + tablet_host + path_query;
+			return 'tablet';
 		} else if (isUAMobile) {
 			document.location.href = mobile_protocol + "//" + mobile_host + path_query;
+			return 'mobile';
+		} else {
+			return 'desktop';
 		}
 		
 	} 
